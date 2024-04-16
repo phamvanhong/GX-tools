@@ -1,6 +1,7 @@
 # GX-tools
 
 # 1. Add this function following the path:
+
 src -> metadata_tool -> core -> entities -> table.py ->
 def to_dict(self) -> Dict[str, Any]:
         """
@@ -13,11 +14,14 @@ def to_dict(self) -> Dict[str, Any]:
         entity_dict[COLUMNS] = self.columns
  
         return entity_dict
-# 2. Add COLUMNS to -> from src.metadata_tool.core.entities.common.constants import PATH, QUALIFIED_NAME
+# 2. Add "COLUMN"
+
+Add COLUMNS to -> from src.metadata_tool.core.entities.common.constants import PATH, QUALIFIED_NAME
 
 # 3. Edit tables name list (tables_name) in main.py you want to write gx
 
 # 4. After run main.py,following this:
+
     PowerShell -> cd ..../DataModeling
     
     + Run:
