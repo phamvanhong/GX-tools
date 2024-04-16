@@ -117,7 +117,7 @@ class ExpectationsCases:
             )
 
                 gx.save_expectation_suite()
-            else:
+            elif len(keys_list) > 1:
                 # setup "kwargs" value
                 KWARGS_COMPOUND_UNIQUE[COLUMN_LIST] = keys_list
                 kwargs = KWARGS_COMPOUND_UNIQUE
