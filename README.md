@@ -1,5 +1,6 @@
 # 1. Add this function following the path:
 src -> metadata_tool -> core -> entities -> table.py ->
+
 def to_dict(self) -> Dict[str, Any]:
 
         """
