@@ -5,16 +5,16 @@
 src -> metadata_tool -> core -> entities -> table.py ->
 
 def to_dict(self) -> Dict[str, Any]:
+
         """
         Convert TableEntity to a dictionary.
- 
         Returns:
             Dict[str, Any]: A dictionary representation of the TableEntity.
         """
         entity_dict = super().to_dict()
         entity_dict[COLUMNS] = self.columns
- 
         return entity_dict
+        
 # 2. Add "COLUMN"
 
 Add COLUMNS to -> from src.metadata_tool.core.entities.common.constants import PATH, QUALIFIED_NAME
