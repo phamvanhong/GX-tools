@@ -2,21 +2,22 @@ from constant import *
 import sys
 sys.path.append(BASE_PATH)
 
-from samples.GX.expectation_cases import ExpectationsCases
+from samples.GX.expectation_cases import ExpectationCases
 from samples.GX.update_sub_tables_metadata import update_tables_metadata
 from samples.GX.get_metadata import TablesMetadata
 
 
-def write_expectation(tables_metadata_path: str) -> None:
+def write_expectation(tables_metadata_path: str, null_columns: list) -> None:
     """Writing expectaiton suite for each tables in a specific tier (BRONZE, SILVER or GOLD) 
 
     Args:
         tables_metadata_path (str): path to json file including tables metadata of a specific tier
+        null_columns (list): a list including columns that want to check if they are null
 
     Returns:
         None
     """
-    ax = ExpectationsCases(tables_metadata_path)
+    ax = ExpectationCases(tables_metadata_path, null_columns)
     # Add expectation that table columns match an order set
     ax.expect_table_columns_match_set()
 
@@ -29,7 +30,8 @@ def write_expectation(tables_metadata_path: str) -> None:
 
 if __name__ == "__main__":
     #set up table name
-    table_names = ["RTOM_EB_TRAN_MTHLY", "RTOM_REG_AUTODEBIT_BILL", "RTOM_DIGI_ALL_USERS"]
+    table_names = ["DIGIBANK"]
+    null_columns = ['BR_DIM_ID', 'DIM_TRANS_CHN_ID']
 
     table_metadata = TablesMetadata(table_names)
 
@@ -37,6 +39,6 @@ if __name__ == "__main__":
 
     update_tables_metadata(TABLES_METADATA)
 
-    write_expectation(TABLES_METADATA)
+    write_expectation(TABLES_METADATA, null_columns)
 
 

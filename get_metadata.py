@@ -1,7 +1,6 @@
 from constant import *
 import sys
 sys.path.append(BASE_PATH)
-import os
 from src.metadata_tool.core.platform.common.configs import BRONZE
 import json
 from src.metadata_tool.services.metadata_lookup.dictionary import DictionaryService
@@ -18,7 +17,7 @@ class TablesMetadata():
         Args:
             dict_service (DictionaryService): a DictionaryService object
             entity_filesys (EntityFileSystem): a EntityFileSystem
-            tier (str): The tier for the service (BRONZE, SILVER and GOLD)
+            table_names (list): a list including table names want to create great expectation
         """
         self.dict_service = DictionaryService(BASE_PATH, BRONZE)
         self.entity_filesys = EntityFileSystem(BASE_PATH, BRONZE)
@@ -39,10 +38,10 @@ class TablesMetadata():
 
     def add_expectation_suite_column(self, tables_metadata: list) -> list:
         """
-        Add "expectation_suite" column to sub tables metadata
+        Add "expectation_suite" column to sub-tables metadata
 
         Returns:
-            list: a sub tables metdata was added Expectaion_suite column
+            list: a sub-tables metdata was added Expectaion_suite column
         """
         for table in tables_metadata:
             table_name = table[NAME]

@@ -5,17 +5,19 @@ from config import *
 import copy
 
 
-class ExpectationsCases:
+class ExpectationCases:
     """
     Object including expectation type for tables, columns
     """
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: str, null_columns: list) -> None:
         """
         Parameters: 
             - path(str): path to the json file including tables metadata
+            - null_columns(list): a list including columns that want to check if they are null
         """
         self.path = path
+        self.null_columns = null_columns
         with open(self.path, READ) as file:
             self.tables_metadata = json.load(file)
 
@@ -60,7 +62,7 @@ class ExpectationsCases:
         """
         for item in self.tables_metadata:
             expectation_suite_name = item.get(EXPECTATION_SUITE)
-            columns_set = item.get(COLUMNS)
+            columns_set = self.null_columns
             context_root_dir = item.get(PATH)
             gx = GreatExpectations(context_root_dir, expectation_suite_name)
 
@@ -94,12 +96,11 @@ class ExpectationsCases:
             expectation_suite_name = item.get(EXPECTATION_SUITE)
             context_root_dir = item.get(PATH)
             keys_list = []
-            if 'keys' in item and item['keys']:
-                keys_list = item['keys']
-
+            if KEYS in item and item[KEYS]:
+                keys_list = item[KEYS]
             # set up GreatExpectation:
             gx = GreatExpectations(context_root_dir, expectation_suite_name)
-            
+
             if len(keys_list) == 1:
                 # setup "kwargs" value
                 column = keys_list[0]
