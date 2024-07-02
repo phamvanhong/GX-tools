@@ -1,0 +1,26 @@
+[
+  {
+    "name": "DIGIBANK",
+    "path": "model/bronze/RETAIL/VISA/DIGIBANK/gx",
+    "columns": [
+      "BR_DIM_ID",
+      "CIF",
+      "DIM_TRANS_CHN_ID",
+      "IS_FROM_CRD",
+      "MONTH",
+      "NBR_OF_TRN",
+      "SUM_AMT",
+      "SUM_FEE",
+      "SUM_VAT",
+      "TRN_TYP_DIM_ID"
+    ],
+    "keys": [
+      "BR_DIM_ID",
+      "CIF",
+      "DIM_TRANS_CHN_ID",
+      "IS_FROM_CRD",
+      "MONTH"
+    ],
+    "expectation_suite": "DIGIBANK_expectation_suite"
+  }
+]
