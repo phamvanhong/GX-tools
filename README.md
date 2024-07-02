@@ -21,7 +21,9 @@ Add COLUMNS to -> from src.metadata_tool.core.entities.common.constants import P
 
 # 3. Edit tables name list (tables_name) in main.py you want to write gx
 
-# 4. After run main.py,following this:
+# 4. Edit the null_columns list (in main.py) that refers to the columns want to check null
+
+# 5. After run main.py,following this:
 
     PowerShell -> cd ..../DataModeling
     
